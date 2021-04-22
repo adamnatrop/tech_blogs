@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-md-12 ml-5">
+      <h2>Welcome, {{name}}!</h2>
+    </div>
+  </div>
+</div>
+
+<div class="row ml-5 mt-4">
+  <div class="col-md-4 post">
+    <h3>Create a New Post:</h3>
+
+    <form class="form new-post-form">
+      <div class="form-group">
+        <label for="posts-name">post title:</label>
+        <input class="form-control" type="text" id="post-title" name="post-name" />
+      </div>
+     
+      <div class="form-group">
+        <label for="posts-desc">post text:</label>
+        <textarea class="form-control" id="post-body" name="post-body"></textarea>
+      </div>
+      <div class="new-post-form">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-2">
+
+  </div>
+  {{#if posts.length}}
+  <div class="col-md-6 post-list">
+    <h3>Current Posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/dashboard.js"></script>
